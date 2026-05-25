@@ -1,0 +1,26 @@
+[project]
+name = "annotations"
+version = "0.0.1"
+description = "Annotation learn tasks"
+readme = "README.md"
+requires-python = ">=3.15"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "mypy>=1.20.0",
+    "flake8>=7.0.0",
+    "Flake8-pyproject>=1.2.4",
+]
+
+[tool.mypy]
+python_version = "3.15"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+warn_no_return = true
+warn_unreachable = true
+
+[tool.flake8]
+max-line-length = 120
+extend-ignore = ["E203", "W503"]

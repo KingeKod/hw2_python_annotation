@@ -1,0 +1,22 @@
+from typing import TypedDict, Unpack
+
+
+class Person(TypedDict):
+    name: str
+    age: int
+
+
+def foo(**kwargs: Unpack[Person]) -> Person:
+    return kwargs
+
+
+if __name__ == "__main__":
+    person: Person = {"name": "The Meaning of Life", "age": 1983}
+    foo(**person)
+    typed_dict: Person = {"name": "Brian", "age": 30}
+    foo(**typed_dict)
+    person2: dict[str, object] = {"name": "Brian", "age": 20}
+
+    # foo(**{"name": "Brian"}) expect-type-error
+    # foo(**person2) expect-type-error
+    # foo(**{"name": "Brian", "age": "1979"}) expect-type-error
